@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea Vault</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        @font-face {
+            font-family: "ocr extended";
+            src: url(../Card/OCRAEXT.TTF);
+        }
+
+        body {
+            margin-bottom: 350px;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: rgb(44, 83, 172);
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            width: 90%;
+            height: 200px;
+            margin: 20px auto;
+            position: relative;
+            background: radial-gradient(140% 140% at 0% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+            border-top: 1px solid #eeeded70;
+            border-radius: 15px;
+            backdrop-filter: blur(30px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            filter: grayscale(60%);
+        }
+
+        .bank {
+            color: #ffffff;
+            font-size: 28px;
+            font-family: "Mulish", sans-serif;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .chip {
+            width: 40px;
+            position: absolute;
+            top: 50px;
+            left: 20px;
+        }
+
+        .wifi {
+            width: 30px;
+            position: absolute;
+            top: 55px;
+            left: 70px;
+        }
+
+        .num {
+            color: #ffffff;
+            font-size: 1rem;
+            font-family: "ocr extended";
+            font-weight: 400;
+            position: absolute;
+            bottom: 50px;
+            left: 20px;
+        }
+
+        .card-holder {
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-family: cursive;
+            font-weight: 700;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            text-transform: uppercase;
+        }
+
+        .card-holder span {
+            font-size: 0.6rem;
+            font-family: "Mulish", sans-serif;
+            font-weight: 400;
+        }
+
+        .valid {
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-family: "ocr extended";
+            font-weight: 400;
+            position: absolute;
+            bottom: 20px;
+            left: 120px;
+            text-transform: uppercase;
+        }
+
+        .valid span {
+            font-size: 0.6rem;
+            font-family: "Mulish", sans-serif;
+            font-weight: 400;
+        }
+
+        .visa {
+            width: 50px;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .button-grid a {
+            text-decoration: none;
+            color: white;
+            background-color: #4a90e2;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-grid a:hover {
+            background-color: #357ab7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">sea-vault</div>
+        <div class="card">
+            <h3 class="bank">Bank Of India</h3>
+            <img src="chip.png" alt="Chip" class="chip">
+            <img src="wifi.png" alt="Wifi" class="wifi">
+            <h3 class="num">4100 3876 XXXX XXXX</h3>
+            <h5 class="card-holder">
+                <span>card holder</span><br>
+                YOUR NAME
+            </h5>
+            <h5 class="valid">
+                <span>expiry date</span><br>
+                MM/YYYY
+            </h5>
+            <img src="visa.png" alt="Visa Logo" class="visa">
+        </div>
+        <div class="button-grid">
+            <a href="#basic">Basic</a>
+            <a href="#pro">Pro</a>
+            <a href="#forex">Forex</a>
+            <a href="#merchant">Merchant</a>
+        </div>
+    </div>
+</body>
+</html>
