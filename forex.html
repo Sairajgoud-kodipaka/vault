@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Mode UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background-color: rgb(44, 83, 172);
+            border: 2px solid #ccc;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        .forex-mode {
+            background-color: #2196F3;
+        }
+
+        .markup-fee {
+            background-color: #2196F3;
+        }
+
+        .money-transfer {
+            background-color: #2196F3;
+        }
+
+        .lounge-benefits {
+            background-color: #2196F3;
+        }
+
+        .student-benefits {
+            background-color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="#forex-mode" class="button forex-mode">Forex Mode</a>
+        <a href="#markup-fee" class="button markup-fee">Zero markup fee for loading and unloading money</a>
+        <a href="#money-transfer" class="button money-transfer">International Money Transfer</a>
+        <a href="#lounge-benefits" class="button lounge-benefits">International Lounge and Flight discounts</a>
+        <a href="#student-benefits" class="button student-benefits">Student Overseas Benefits</a>
+    </div>
+</body>
+</html>

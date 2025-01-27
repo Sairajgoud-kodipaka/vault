@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Mode UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background-color: rgb(44, 83, 172);
+            border: 2px solid #ccc;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .button {
+            width: 80%;
+            margin: 10px auto;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        .pro-mode {
+            background-color: #2196F3;
+        }
+
+        .account-status {
+            background-color: #2196F3;
+        }
+
+        .priority-bookings {
+            background-color: #2196F3;
+        }
+
+        .cashbacks {
+            background-color: #2196F3;
+        }
+
+        .upi-transactions {
+            background-color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="button pro-mode">Pro Mode</button>
+        <button class="button account-status">Account balance status</button>
+        <button class="button priority-bookings">Priority Bookings</button>
+        <button class="button cashbacks">CASHBACKS AND REWARDS*</button>
+        <button class="button upi-transactions">UPI Transactions UPTO 200000</button>
+    </div>
+</body>
+</html>
