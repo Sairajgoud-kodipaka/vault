@@ -22,22 +22,27 @@
         }
 
         .container {
-            width: 90%;
-            max-width: 400px;
-            background-color: rgb(44, 83, 172);
-            border: 2px solid #ccc;
-            border-radius: 15px;
-            padding: 30px 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            position: relative;
-            text-align: center;
-        }
+    width: 90%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.15); /* Glassmorphic effect */
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
 
         .menu-toggle {
             position: absolute;
             top: 10px;
             left: 10px;
-            background-color: black;
+            background-color: #2196F3;
             border: none;
             color: white;
             font-size: 1.5rem;
@@ -88,14 +93,198 @@
             font-weight: bold;
             margin-top: 30px;
         }
+        .card {
+            width: 350px;
+            /* Adjusted size */
+            height: 200px;
+            position: relative;
+            background: linear-gradient(180deg, rgb(24, 24, 24), rgb(28, 145, 255), black);
+            border-radius: 15px;
+        
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Bank Name */
+        .bank {
+            color: white;
+            font-size: 18px;
+            font-family: "Mulish", sans-serif;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+        /* Proper positioning for Chip */
+        .chip {
+            width: 40px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+
+        }
+
+        /* Contactless Symbol */
+        .wifi {
+            width: 30px;
+            position: absolute;
+            top: 26px;
+            left: 70px;
+        }
+
+        /* Card Number */
+        .num {
+            color: white;
+            font-size: 22px;
+            font-family: "ocr extended";
+            position: absolute;
+            bottom: 70px;
+            left: 60px;
+            white-space: nowrap;
+        }
+
+        /* Card Holder */
+        .card-holder {
+            color: white;
+            font-size: 14px;
+            gap: 5px;
+            font-family: "Mulish", sans-serif;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        /* Expiry Date */
+        .valid {
+            color: white;
+            font-size: 10px;
+            font-family: "Mulish", sans-serif;
+            position: absolute;
+            bottom: 20px;
+            left: 150px;
+        }
+
+        /* VISA Logo */
+        .visa {
+            width: 50px;
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+        }
+
+        .section {
+            display: none;
+            /* Initially hide all sections */
+            background-color: #1b7ee1;
+            color: white;
+            padding: 50px;
+            border-radius: 8px;
+            margin: 10px;
+            text-align: center;
+        }
+        .transaction-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    padding: auto;
+}
+
+.transaction-card {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    width: 300px;
+}
+
+.transaction-container {
+
+    width: 100%;
+    background-color: #3498db;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.transaction-card {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    width: 300px;
+}
+.transaction-table {
+    width: 100%; /* Make the table use the full container width */
+    border-collapse: collapse; /* Eliminate space between borders */
+    margin-top: 20px; /* Add some space above the table */
+}
+
+.transaction-table th,
+.transaction-table td {
+    border: 1px solid #ccc; /* Light grey border for readability */
+    padding: 8px; /* Padding inside cells for spacing text */
+    text-align: left; /* Align text to the left for consistency */
+}
+
+.transaction-table th {
+    background-color: #3498db; /* Blue background for headers */
+    color: white; /* White text for headers */
+}
+
+.transaction-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Zebra striping for rows */
+}
+
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #2196F3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2196F3;
+}
+
     </style>
 </head>
 <body>
+    <div class="video-container">
+        <video autoplay muted loop id="myVideo">
+            <source src="bg.mp4" type="video/mp4">
+        </video>
     <div class="container">
-        <button class="menu-toggle"><a href="toggle.html">&#9776;</a></button>
-        <a href="#vendor-mode" class="button vendor-mode">Vendor Mode</a>
-        <a href="#transaction-summary" class="button transaction-summary">Transaction Summary</a>
-        <div class="transaction-history">TRANSACTION HISTORY</div>
-    </div>
+        
+<div class="card">
+    <h3 class="bank">sea vault</h3>
+    <img src="chip.png" alt="Chip" class="chip">
+    <img src="wifi.png" alt="Wifi" class="wifi">
+    <h3 class="num">4100 3876 XXXX XXXX</h3>
+    <h5 class="card-holder">
+        <span> DAS ADITHYA</span><br>
+
+    </h5>
+    <h5 class="valid">
+        <span>VALID THRU</span><br>
+        07/28
+    </h5>
+    <img src="visa.png" alt="Visa Logo" class="visa">
+</div>       
+<div class="transaction-container"></div>
+<button onclick="loadTransactions()">Load Transactions</button>
+<div class="transaction-container"></div>
+<button onclick="loadPeriodicReport()">Periodic Month Report</button>    </div>
+    <script src="vendor.js"></script>
+
 </body>
 </html>
