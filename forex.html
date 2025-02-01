@@ -60,7 +60,8 @@
 
 
         .card {
-            width: 350px;
+            width: 100%;
+            max-width: 350px;
             /* Adjusted size */
             height: 200px;
             position: relative;
@@ -261,56 +262,78 @@
             background-color: #3b3d3e;
             /* Darker shade on hover for interaction feedback */
         }
+
         /* Styles specifically for the Currency Converter section */
-/* Base styling for the Currency Converter section */
-.currency-converter {
-    background-color: #2c3e50; /* Deep blue background */
-    color: white;
-    padding: 20px;
-    border-radius: 10px; /* Rounded corners */
-    text-align: center;
-    width: 100%; /* Full container width */
-    max-width: 400px; /* Control max width for responsive design */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add depth with shadow */
-    margin: auto; /* Center align in the available space */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        /* Base styling for the Currency Converter section */
+        #currencyConverter {
+            background-color: #1787ffcb;
+            /* Deep blue background */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            /* Rounded corners */
+            text-align: center;
+            width: 100%;
+            /* Full container width */
+            max-width: 400px;
+            /* Control max width for responsive design */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            /* Add depth with shadow */
+            margin: auto;
+            /* Center align in the available space */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.currency-converter input[type="number"],
-.currency-converter select {
-    width: 90%; /* Slightly smaller width for padding aesthetics */
-    padding: 12px; /* Comfortable padding for interaction */
-    margin: 10px 0; /* Space between elements */
-    border: 2px solid #3498db; /* Blue border matching the button */
-    border-radius: 8px; /* Rounded corners for inputs and selects */
-    background-color: #fff; /* White background for contrast */
-    color: #333; /* Dark text for readability */
-    font-size: 16px; /* Adequate font size for readability */
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); /* Subtle inner shadow */
-}
+        #currencyConverter input[type="number"],
+        #currencyConverter select {
+            width: 90%;
+            /* Slightly smaller width for padding aesthetics */
+            padding: 12px;
+            /* Comfortable padding for interaction */
+            margin: 10px 0;
+            /* Space between elements */
+            border: 2px solid #fdfdfd;
+            /* Blue border matching the button */
+            border-radius: 8px;
+            /* Rounded corners for inputs and selects */
+            background-color: #fff;
+            /* White background for contrast */
+            color: #333;
+            /* Dark text for readability */
+            font-size: 16px;
+            /* Adequate font size for readability */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Subtle inner shadow */
+        }
 
-.currency-converter button {
-    padding: 12px 25px; /* Larger padding for a prominent button */
-    background-color: #3498db; /* Bright blue for the button */
-    color: white;
-    border: none;
-    border-radius: 8px; /* Rounded corners like inputs */
-    cursor: pointer;
-    width: 50%; /* Button width for emphasis but not too large */
-    margin: 20px 0; /* Adjusted margin for a balanced layout */
-    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Pronounced shadow for 3D effect */
-}
+        #currencyConverter button {
+            padding: 12px 25px;
+            /* Larger padding for a prominent button */
+            background-color: #505355;
+            /* Bright blue for the button */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            /* Rounded corners like inputs */
+            cursor: pointer;
+            width: 50%;
+            /* Button width for emphasis but not too large */
+            margin: 20px 0;
+            /* Adjusted margin for a balanced layout */
+            transition: background-color 0.3s, box-shadow 0.3s;
+            /* Smooth transitions */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Pronounced shadow for 3D effect */
+        }
 
-.currency-converter button:hover {
-    background-color: #1d6fa5; /* Darker blue on hover for interaction feedback */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover for visual effect */
-}
-
-
-
+        #currencyConverter button:hover {
+            background-color: #4ea8e4;
+            /* Darker blue on hover for interaction feedback */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            /* Deeper shadow on hover for visual effect */
+        }
     </style>
 </head>
 
@@ -345,25 +368,30 @@
 
             <div id="currencyConverter" class="section hidden">
                 <h2>Currency Converter</h2>
-                <div class="input-group">
+                <br>
+                <div class="input">
                     <input type="number" id="amount" placeholder="Enter amount">
+                    <br>
                     <select id="fromCurrency">
                         <option value="USD">USD</option>
                         <option value="EUR">EUR</option>
                         <option value="GBP">GBP</option>
                         <option value="INR">INR</option>
                     </select>
+
                     <select id="toCurrency">
                         <option value="INR">INR</option>
                         <option value="USD">USD</option>
                         <option value="EUR">EUR</option>
                         <option value="GBP">GBP</option>
                     </select>
+                    <br>
                     <button onclick="convertCurrency()">Convert</button>
                 </div>
+                <br>
                 <p class="result">Converted Amount: <span id="convertedAmount"></span></p>
             </div>
-
+            <br>
             <div id="moneyTransfer" class="section hidden">
 
                 <h2>International Money Transfer</h2>
@@ -380,23 +408,34 @@
 
             <div id="loungeDiscounts" class="section hidden">
                 <h2>International Lounge and Flight Discounts</h2>
+                <br>
                 <ul>
                     <li>Wave cardholders can get one free Lounge Pass per quarter outside of India.</li>
+                    <br>
                     <li>Airport lounges offer amenities like comfortable seating, food, drinks, and Wi-Fi.</li>
+                    <br>
                     <li>Wave cards offer zero forex markup.</li>
+                    <br>
                     <li>Wave cards offer free loading and unloading of currency.</li>
+                    <br>
                     <li>Wave cards offer flight booking offers and travel insurance.</li>
                 </ul>
             </div>
 
             <div id="studentBenefits" class="section hidden">
                 <h2>Student Overseas Benefits</h2>
+                <br>
                 <ul>
-                    <li>Discounted Travel: Significant discounts on international flights and rail tickets.</li>
-                    <li>Accommodation Deals: Special rates on student housing.</li>
-                    <li>Health and Wellness: Reduced prices on health insurance plans and gym memberships.</li>
-                    <li>Technology Discounts: Lower prices on laptops, tablets, and software.</li>
-                    <li>Cultural Experiences: Discounts on museum tickets, cultural events, and language courses.</li>
+                    <li> <b>Discounted Travel:</b> Significant discounts on international flights and rail tickets.</li>
+                    <br>
+                    <li><b>Accommodation Deals:</b>Special rates on student housing.</li>
+                    <br>
+                    <li><b>Health and Wellness:</b> Reduced prices on health insurance plans and gym memberships.</li>
+                    <br>
+                    <li><b>Technology Discounts:</b> Lower prices on laptops, tablets, and software.</li>
+                    <br>
+                    <li><b>Cultural Experiences:</b> Discounts on museum tickets, cultural events, and language courses.
+                    </li>
                 </ul>
             </div>
         </div>
