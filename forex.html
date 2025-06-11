@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Mode</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.15);
+            /* Glassmorphic effect */
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+
+        .button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+
+        .card {
+            width: 100%;
+            max-width: 350px;
+            /* Adjusted size */
+            height: 200px;
+            position: relative;
+            background: linear-gradient(135deg, #2c2c2c, #111);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Bank Name */
+        .bank {
+            color: white;
+            font-size: 18px;
+            font-family: "Mulish", sans-serif;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+        /* Proper positioning for Chip */
+        .chip {
+            width: 40px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        /* Contactless Symbol */
+        .wifi {
+            width: 30px;
+            position: absolute;
+            top: 26px;
+            left: 70px;
+        }
+
+        /* Card Number */
+        .num {
+            color: white;
+            font-size: 22px;
+            font-family: "ocr extended";
+            position: absolute;
+            bottom: 70px;
+            left: 60px;
+            white-space: nowrap;
+        }
+
+        /* Card Holder */
+        .card-holder {
+            color: white;
+            font-size: 14px;
+            gap: 5px;
+            font-family: "Mulish", sans-serif;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        /* Expiry Date */
+        .valid {
+            color: white;
+            font-size: 10px;
+            font-family: "Mulish", sans-serif;
+            position: absolute;
+            bottom: 20px;
+            left: 150px;
+        }
+
+        /* VISA Logo */
+        .visa {
+            width: 50px;
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+        }
+
+        .section {
+            display: none;
+            /* Initially hide all sections */
+            background-color: #1b7ee1;
+            color: white;
+            padding: 50px;
+            border-radius: 8px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .menu button {
+            width: 80%;
+            margin: 10px auto;
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-color: #2c2c2c;
+            color: rgb(235, 232, 232);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .menu button:hover {
+            background-color: #2196F3;
+            transform: scale(1.05);
+
+        }
+
+        /* Styles for the 'moneyTransfer' section */
+        #moneyTransfer {
+            background-color: #1e6ebe;
+            /* Deep blue background for a sleek look */
+            color: white;
+            /* White text for contrast */
+            padding: 20px;
+            border-radius: 10px;
+            /* Rounded corners for a modern feel */
+            text-align: center;
+            /* Center align the text and form elements */
+            width: 100%;
+            /* Full width to fit container or adjust as necessary */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+            /* Subtle shadow for depth */
+            margin: 20px 0;
+            /* Margin for spacing around the section */
+            display: none;
+            /* Start hidden and toggle visibility with JavaScript */
+        }
+
+        #moneyTransfer h2 {
+            margin-bottom: 20px;
+            /* Space below the header */
+        }
+
+        /* Styling for input fields to make them stand out and easy to use */
+        #moneyTransfer input[type="text"],
+        #moneyTransfer input[type="number"] {
+            width: 80%;
+            /* Responsive width */
+            padding: 10px;
+            /* Padding for comfort */
+            margin-bottom: 10px;
+            /* Space between inputs */
+            border: none;
+            /* No borders for a clean look */
+            border-radius: 5px;
+            /* Slightly rounded corners on inputs *
+            background-color: #fff;
+            /* White background for the inputs */
+            color: #333;
+            /* Darker text for readability */
+            font-size: 16px;
+            /* Sufficient size for legibility */
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            /* Soft shadow for inputs */
+        }
+
+        /* Styling for the form action area containing the submit button */
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            /* Space out the button and the input */
+            align-items: center;
+            /* Vertically center align items */
+            margin-top: 10px;
+            /* Extra top margin for spacing */
+        }
+
+        /* Button styling for action-taking elements */
+        #moneyTransfer button {
+            padding: 10px 20px;
+            /* Padding for a larger, more clickable area */
+            background-color: #232526;
+            /* Bright blue for the button */
+            color: white;
+            /* White text for visibility */
+            border: none;
+            /* No borders for a smooth appearance */
+            border-radius: 20px;
+            /* Rounded corners for the button */
+            cursor: pointer;
+            /* Cursor indicates clickable */
+            font-size: 16px;
+            /* Font size matches input for consistency */
+            width: 30%;
+            margin-left: 10px;
+            /* Width to match styling and ensure it doesn't stretch too far */
+            transition: background-color 0.3s;
+            /* Smooth transition for hover effect */
+        }
+
+        #moneyTransfer button:hover {
+            background-color: #3b3d3e;
+            /* Darker shade on hover for interaction feedback */
+        }
+
+        /* Styles specifically for the Currency Converter section */
+        /* Base styling for the Currency Converter section */
+        #currencyConverter {
+            background-color: #1787ffcb;
+            /* Deep blue background */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            /* Rounded corners */
+            text-align: center;
+            width: 100%;
+            /* Full container width */
+            max-width: 400px;
+            /* Control max width for responsive design */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            /* Add depth with shadow */
+            margin: auto;
+            /* Center align in the available space */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #currencyConverter input[type="number"],
+        #currencyConverter select {
+            width: 90%;
+            /* Slightly smaller width for padding aesthetics */
+            padding: 12px;
+            /* Comfortable padding for interaction */
+            margin: 10px 0;
+            /* Space between elements */
+            border: 2px solid #fdfdfd;
+            /* Blue border matching the button */
+            border-radius: 8px;
+            /* Rounded corners for inputs and selects */
+            background-color: #fff;
+            /* White background for contrast */
+            color: #333;
+            /* Dark text for readability */
+            font-size: 16px;
+            /* Adequate font size for readability */
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Subtle inner shadow */
+        }
+
+        #currencyConverter button {
+            padding: 12px 25px;
+            /* Larger padding for a prominent button */
+            background-color: #505355;
+            /* Bright blue for the button */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            /* Rounded corners like inputs */
+            cursor: pointer;
+            width: 50%;
+            /* Button width for emphasis but not too large */
+            margin: 20px 0;
+            /* Adjusted margin for a balanced layout */
+            transition: background-color 0.3s, box-shadow 0.3s;
+            /* Smooth transitions */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Pronounced shadow for 3D effect */
+        }
+
+        #currencyConverter button:hover {
+            background-color: #4ea8e4;
+            /* Darker blue on hover for interaction feedback */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            /* Deeper shadow on hover for visual effect */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-container">
+        <video autoplay muted loop id="myVideo">
+            <source src="bg.mp4" type="video/mp4">
+        </video>
+        <div class="container">
+            <div class="header"></div>
+            <div class="card">
+                <h3 class="bank">sea vault</h3>
+                <img src="chip.png" alt="Chip" class="chip">
+                <img src="wifi.png" alt="Wifi" class="wifi">
+                <h3 class="num">4100 3876 XXXX XXXX</h3>
+                <h5 class="card-holder">
+                    <span> DAS ADITHYA</span><br>
+
+                </h5>
+                <h5 class="valid">
+                    <span>VALID THRU</span><br>
+                    07/28
+                </h5>
+                <img src="visa.png" alt="Visa Logo" class="visa">
+            </div>
+            <div class="menu">
+                <button onclick="showSection('currencyConverter')">Currency Converter</button>
+                <button onclick="showSection('moneyTransfer')">International Money Transfer</button>
+                <button onclick="showSection('loungeDiscounts')">International Lounge and Flight Discounts</button>
+                <button onclick="showSection('studentBenefits')">Student Overseas Benefits</button>
+            </div>
+
+            <div id="currencyConverter" class="section hidden">
+                <h2>Currency Converter</h2>
+                <br>
+                <div class="input">
+                    <input type="number" id="amount" placeholder="Enter amount">
+                    <br>
+                    <select id="fromCurrency">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="INR">INR</option>
+                    </select>
+
+                    <select id="toCurrency">
+                        <option value="INR">INR</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                    <br>
+                    <button onclick="convertCurrency()">Convert</button>
+                </div>
+                <br>
+                <p class="result">Converted Amount: <span id="convertedAmount"></span></p>
+            </div>
+            <br>
+            <div id="moneyTransfer" class="section hidden">
+
+                <h2>International Money Transfer</h2>
+                <form id="transactionForm">
+                    <input type="text" id="recipient" placeholder="Recipient Name">
+                    <input type="text" id="accountNumber" placeholder="Account Number">
+                    <input type="text" id="bankName" placeholder="Bank Name">
+                    <div class="form-actions">
+                        <input type="number" id="transferAmount" placeholder="Amount to Transfer">
+                        <button type="submit">Send Money</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="loungeDiscounts" class="section hidden">
+                <h2>International Lounge and Flight Discounts</h2>
+                <br>
+                <ul>
+                    <li>Wave cardholders can get one free Lounge Pass per quarter outside of India.</li>
+                    <br>
+                    <li>Airport lounges offer amenities like comfortable seating, food, drinks, and Wi-Fi.</li>
+                    <br>
+                    <li>Wave cards offer zero forex markup.</li>
+                    <br>
+                    <li>Wave cards offer free loading and unloading of currency.</li>
+                    <br>
+                    <li>Wave cards offer flight booking offers and travel insurance.</li>
+                </ul>
+            </div>
+
+            <div id="studentBenefits" class="section hidden">
+                <h2>Student Overseas Benefits</h2>
+                <br>
+                <ul>
+                    <li> <b>Discounted Travel:</b> Significant discounts on international flights and rail tickets.</li>
+                    <br>
+                    <li><b>Accommodation Deals:</b>Special rates on student housing.</li>
+                    <br>
+                    <li><b>Health and Wellness:</b> Reduced prices on health insurance plans and gym memberships.</li>
+                    <br>
+                    <li><b>Technology Discounts:</b> Lower prices on laptops, tablets, and software.</li>
+                    <br>
+                    <li><b>Cultural Experiences:</b> Discounts on museum tickets, cultural events, and language courses.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script src="forex.js"></script>
+</body>
+
+</html>

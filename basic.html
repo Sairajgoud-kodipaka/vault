@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Mode</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 120%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.15);
+            /* Glassmorphic effect */
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .button {
+            width: 80%;
+            margin: 10px auto;
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        .basic-mode {
+            background-color: #2196F3;
+            font-size: 18px;
+            margin: 10px 0;
+
+
+        }
+
+
+        .account-info {
+            background-color: #bec0c1;
+    padding: 10px;
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom: 20px; 
+        }
+
+        .payment-method {
+            background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    width: 100%; /* Ensure full width within container */
+    margin-bottom: 10px;         }
+
+        .payment-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .credit {
+            background-color: #2196F3;
+            flex: 1;
+            margin: 5px;
+        }
+
+        .debit {
+            background-color: #2196F3;
+            flex: 1;
+            margin: 5px;
+        }
+
+        .payment-buttons .button {
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .card {
+            width: 350px;
+            /* Adjusted size */
+            height: 200px;
+            position: relative;
+            background: linear-gradient(135deg, #2c2c2c, #111);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 90px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Bank Name */
+        .bank {
+            color: white;
+            font-size: 18px;
+            font-family: "Mulish", sans-serif;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+        /* Proper positioning for Chip */
+        .chip {
+            width: 40px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        /* Contactless Symbol */
+        .wifi {
+            width: 30px;
+            position: absolute;
+            top: 26px;
+            left: 70px;
+        }
+
+        /* Card Number */
+        .num {
+            color: white;
+            font-size: 22px;
+            font-family: "ocr extended";
+            position: absolute;
+            bottom: 70px;
+            left: 60px;
+            white-space: nowrap;
+        }
+
+        /* Card Holder */
+        .card-holder {
+            color: white;
+            font-size: 14px;
+            gap: 5px;
+            font-family: "Mulish", sans-serif;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        /* Expiry Date */
+        .valid {
+            color: white;
+            font-size: 10px;
+            font-family: "Mulish", sans-serif;
+            position: absolute;
+            bottom: 20px;
+            left: 150px;
+        }
+
+        /* VISA Logo */
+        .visa {
+            width: 50px;
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-container">
+        <video autoplay muted loop id="myVideo">
+            <source src="bg.mp4" type="video/mp4">
+        </video>
+        <div class="container">
+            <div class="header"></div>
+            <div class="card">
+                <h3 class="bank">sea vault</h3>
+                <img src="chip.png" alt="Chip" class="chip">
+                <img src="wifi.png" alt="Wifi" class="wifi">
+                <h3 class="num">4100 3876 XXXX XXXX</h3>
+                <h5 class="card-holder">
+                    <span> DAS ADITHYA</span><br>
+
+                </h5>
+                <h5 class="valid">
+                    <span>VALID THRU</span><br>
+                    07/28
+                </h5>
+                <img src="visa.png" alt="Visa Logo" class="visa">
+            </div>
+            <div class="account-info">
+                <p>Account Holder :  <span id="accountHolder">DAS ADITHYA</span></p>
+                <p>Account Balance :  ₹ <span id="balance">0</span></p>
+            </div>
+            <!-- Method of Payment Button -->
+<button class="button payment-method" onclick="togglePaymentOptions()">Method of payment</button>
+
+<!-- Payment Buttons, initially hidden -->
+<div class="payment-buttons" style="display: none;" id="paymentOptions">
+    <a href="credit.html" class="button credit">Credit</a>
+    <a href="credit.html" class="button debit">Debit</a>
+</div>
+
+        </div>
+        <script>
+            function togglePaymentOptions() {
+                var paymentOptions = document.getElementById('paymentOptions');
+                if (paymentOptions.style.display === 'none') {
+                    paymentOptions.style.display = 'flex';
+                } else {
+                    paymentOptions.style.display = 'none';
+                }
+            }
+        </script>
+        
+        <script src="basic.js"></script>
+
+</body>
+
+</html>
